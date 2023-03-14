@@ -1,0 +1,498 @@
+﻿
+@{
+    ViewData["Title"] = "advertisers";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/x-icon" href="~/datatablesassets/assets/img/favicon.ico" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="~/datatablesassets/assets/css/loader.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/datatablesassets/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
+    <link rel="stylesheet" type="text/css" href="~/datatablesassets/plugins/table/datatable/datatables.css">
+    <link rel="stylesheet" type="text/css" href="~/datatablesassets/plugins/table/datatable/custom_dt_customer.css">
+    <!-- END PAGE LEVEL CUSTOM STYLES -->
+
+    <link rel="stylesheet" href="https://designreset.com/preview-equation/default/plugins/flaticon/style.css">
+    <link rel="stylesheet" href="https://designreset.com/preview-equation/default/plugins/table/datatable/custom_dt_customer.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+ 
+    <link href="~/assets/css/icons.css" rel="stylesheet">
+    <style>
+        .mt-100 {
+            margin-top: 100px
+        }
+      
+    </style>
+    <style>
+        .choices
+        {
+            display: flex;
+        }
+        .new-control.new-checkbox .new-control-indicator {
+            position: absolute;
+            top: 0.25rem;
+            left: 0;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 50% 50%;
+            border-radius: 2px;
+            border: 2px solid;
+        }
+
+        .widget-content-area {
+            padding: 20px;
+            /*  border-radius: 13px;*/
+            position: relative;
+            background-color: #fff;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            -webkit-box-shadow: 0 2px 4px rgb(126 142 177 / 12%);
+            box-shadow: 0 2px 4px rgb(126 142 177 / 12%);
+        }
+
+        .table-responsive > .dataTables_wrapper .row:nth-child(2) > .col-sm-12:first-child {
+            margin-top: 1em;
+        }
+
+       
+        .table > thead {
+            background-color: #e9eaee;
+            vertical-align: bottom;
+        }
+            .table > thead > tr > th:hover {
+                color: #6c89b8;
+            }
+
+        .dataTables_filter input {
+            margin-left: 5px;
+            /* border-radius: 30px; */
+            padding-bottom: 1px;
+            padding-top: 0px;
+            border: solid 1px #888ea8;
+        }
+
+        div.dataTables_wrapper div.dataTables_filter label {
+            font-weight: normal;
+            white-space: nowrap;
+            text-align: left;
+            margin-top: 7%;
+            display: inline-flex;
+            line-height: 33px;
+        }
+
+        div.dataTables_wrapper div.dataTables_filter {
+            text-align: right;
+            display: inline;
+            float: right;
+        }
+
+        .widget-content-area
+        {
+                margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+        }
+
+        .dataTables_filter, .dataTables_length {
+            margin-top: 3%;
+            margin-bottom: -0.5rem !important;
+            padding-top: 4%;
+        }
+
+        div.dataTables_wrapper div.dataTables_length label {
+            font-weight: bolder;
+            text-align: left;
+            white-space: nowrap;
+        }
+        @@media (min-width: 1200px)
+        {
+.row {
+    margin-left: -11px;
+
+}
+}
+    </style>
+</head>
+
+<body>
+
+    @*<div class="main-container" id="container">
+
+
+        <div id="content" class="main-content">*@
+            <div id="content" class="span10">
+            <div class="" style=" background-color: white; padding: 0;">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="box-header" data-original-title="">
+                        <h2><i class="icon-cloud-download"></i><span class="break"></span>Campaigns</h2>
+                        <div class="box-icon">
+                            <a href="business_logic/export_source_list.php" class="btn-link" title="" data-rel="tooltip" data-original-title="Export Source List"><i class="icon-external-link"></i></a>
+                            <a data-toggle="modal" data-target="#exampleModal" class="btn-link" title="" data-rel="tooltip" data-original-title="Add New Source"><i class="icon-plus-sign"></i></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row layout-spacing">
+                    <div class="col-lg-12">
+                        <div class="statbox widget box box-shadow">
+
+                            <div class="widget-content widget-content-area">
+                                <div class="table-responsive mb-4 style-1" style="border-radius: 8px; border: 2px solid;">
+                                    <table id="customer-info-detail-1" class="table style-1  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Role</th>
+                                                <th>Skype</th>
+                                                <th>Contact</th>
+                                                <th>Email</th>
+                                               
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var i in ViewBag.user)
+                        {
+                                                <tr>
+<td></td>
+                                                <td>@i.FirstName </td>
+                                                <td>@i.LastName</td>
+                                                <td>
+                                            
+                                                        <button style="border: none; width: 100%; background-color: #319795; border-radius: 6px; ">@i.SystemRoll</button>
+                                                    
+                                                </td>
+                                                <td>@i.SkypeAddress</td>
+                                                <td>@i.Contact</td>
+                                                <td><a href="mailto:@i.Gmail" style="color:blue;">@i.Gmail</a></td>
+
+                                                    <td>
+                                                        <span class="label">
+                                                            @*<a class="btn btn-info btn-setting" href="#" onclick="viewHistoricalPerformance(51)" title="" data-rel="tooltip" data-original-title="Historical Performance"><i class="icon-time"></i></a><a class="btn btn-danger" href="business_logic/execute.php?task=suspendsource&amp;sourceid=51" title="" data-rel="tooltip" data-original-title="Suspend this source"><i class="icon-thumbs-down "></i></a>*@
+                                                        <a class="btn btn-info" href="/Home/UserEdit?tid=@i.AdminLoginId" title="" data-rel="tooltip" data-original-title="Edit this source"><i class="icon-edit "></i></a>
+                                                            @*<a class="btn btn-info" href="#" title="" onclick="window.open('posting_specs.php?sourceid=51','postInst','width=1100,height=800,scrollbars=yes,resizable=yes');" data-rel="tooltip" data-original-title="View instructions"><i class="icon-question-sign "></i></a>*@
+                                                            <a class="btn btn-danger" href="#" @* href="/Home/delete?sourceid=@i.Id"*@ title="" data-rel="tooltip" data-original-title="Delete this campaign">
+                                                                <i class="icon-trash "></i>
+                                                            </a>
+                                                       
+                                                        
+                                                          
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">  </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div id="" class="span12">
+                                                    <form class="form-horizontal" action="/User/submitnewuser" style="display:inline;" method="post" id="adminroles" enctype="multipart/form-data" autocomplete="off">
+                                                        <fieldset>
+
+                                                            <div class="row-fluid ">
+                                                                <div class="box span4" style="min-width:500px">
+                                                                    <div class="box-header">
+                                                                        <h2><i class="icon-edit"></i>User Details</h2>
+                                                                        <div class="box-icon">
+                                                                            <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-content">
+
+                                                                        @*  <div class="control-group">
+                                                                        <label class="control-label" for="customers:monetizer_id">Customer</label>
+                                                                        <div class="controls"><select name="customers" id="selectcustomers:monetizer_id"><option value="" selected=""></option><option value="Doug">Doug</option><option value="Customer">Example Customer</option><option value="GMG">GMG</option><option value="Wisdom">Wisdom</option></select></div>
+                                                                        </div>*@
+
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">First Name</label>
+                                                                            <div class="controls"><input type="text" class="input-large" id="fname" name="fname" value=""></div>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Last Name</label>
+                                                                            <div class="controls"><input type="text" class="input-large" id="lname" name="lname" value=""></div>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Role</label>
+                                                                            
+
+                                                                                <div class="controls">
+                                                                                    <select style="    padding-bottom: 0%;" id="change"  class="input-large form-control" name="roll">
+                                                                                        <option value="Admin">Admin </option>
+                                                                                        <option value="Editor">Editor </option>
+                                                                                        <option value="Visitor">Visitor </option>
+                                                                                        
+
+                                                                                    </select>
+                                                                                </div>
+                                                                            
+
+                                                                        </div>
+                                                                        <div class="control-group access">
+                                                                            <label class="control-label" for="customers:SelectAttributes">Select Access</label>
+                                                                            <select name="access" class="input-large form-control" id="choices-multiple-remove-button" multiple>
+
+                                                                                <option value="Campaign">Campaign</option>
+                                                                                <option value="DataSource">Data Source </option>
+                                                                                <option value="Provider">Provider</option>
+                                                                                
+
+                                                                            </select>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Skype</label>
+                                                                            <div class="controls"><input type="text" class="input-large" id="skype" name="skype" value=""></div>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Contact Number</label>
+                                                                            <div class="controls"><input type="text" class="input-large" id="contact" name="contact" value=""></div>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Email Address</label>
+                                                                            <div class="controls"><input type="text" class="input-large" id="gmail" name="gmail" value=""></div>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Password</label>
+                                                                            <div class="controls">
+
+                                                                                <div class="input-group" id="show_hide_password">
+                                                                                    <a href="javascript:;" class="input-group-text bg-transparent" style="
+    background-color: #a2a5a1 !important;
+">
+                                                                                        <i class="bx bx-show" style="
+    color: white;
+"></i>
+                                                                                    </a><input type="text" required="" class="input-large   pass" name="password" id="inputChoosePassword" placeholder="Enter Password">
+                                                                                </div>
+                                                                                
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="control-group">
+                                                                            <label class="control-label">Image</label>
+                                                                            <div class="controls"><input style="    padding-bottom: 15%;" type="file" name="files" src="files" id="files" class="input-large "></div>
+
+                                                                        </div>
+                                                                       
+                                                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--  END CONTENT PART  -->
+    </div>
+
+   
+
+    <!--  END CONTROL SIDEBAR  -->
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="~/datatablesassets/assets/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="~/datatablesassets/assets/js/loader.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/datatablesassets/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/datatablesassets/assets/js/app.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });
+    </script>
+    <script src="~/datatablesassets/assets/js/custom.js"></script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="~/datatablesassets/plugins/table/datatable/datatables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass("bx-hide");
+            $('#show_hide_password i').removeClass("bx-show");
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.access').hide();
+
+            $('#change').change(function () {
+                
+                var Role = $("#change").val();
+                if (Role == "Editor") {
+                  
+                    $('.access').show();
+                    //$('#PATH').hide();
+                    //$('#POP').hide();
+                    //$('#Unclaimed').hide();
+                    //$('#EXIT').hide();
+                }
+                else {
+                    $('.access').hide();
+                }
+            });
+        });
+       
+        </script>
+    <script>
+        // var e;
+        c1 = $('#customer-info-detail-1').DataTable({
+
+            "lengthMenu": [10, 20, 50, 100],
+            headerCallback: function (e, a, t, n, s) {
+                e.getElementsByTagName("th")[0].innerHTML = '<label class="new-control new-checkbox checkbox-outline-primary m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            },
+
+            columnDefs: [{
+                targets: 0,
+                width: "30px",
+                className: "",
+                orderable: !1,
+                render: function (e, a, t, n) {
+                    return '<label class="new-control new-checkbox checkbox-outline-primary  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+                }
+
+
+            }],
+            "language": {
+                "paginate": {
+                    "previous": "<i class='fas fa-angle-left'></i>",
+                    "next": "<i class='fas fa-angle-right'></i>"
+                },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }
+        });
+
+        multiCheck(c1);
+
+        c2 = $('#customer-info-detail-2').DataTable({
+            "lengthMenu": [5, 10, 20, 50, 100],
+            headerCallback: function (e, a, t, n, s) {
+                e.getElementsByTagName("th")[0].innerHTML = '<label class="new-control new-checkbox checkbox-outline-primary m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            },
+
+            columnDefs: [{
+                targets: 0,
+                width: "30px",
+                className: "",
+                orderable: !1,
+                render: function (e, a, t, n) {
+                    return '<label class="new-control new-checkbox checkbox-outline-primary  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+                }
+            }],
+            "language": {
+                "paginate": {
+                    "previous": "<i class='flaticon-arrow-left-1'></i>",
+                    "next": "<i class='flaticon-arrow-right'></i>"
+                },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }
+        });
+
+        multiCheck(c2);
+
+        c3 = $('#customer-info-detail-3').DataTable({
+            "lengthMenu": [5, 10, 20, 50, 100],
+            "language": {
+                "paginate": {
+                    "previous": "<i class='flaticon-arrow-left-1'></i>",
+                    "next": "<i class='flaticon-arrow-right'></i>"
+                },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }
+        });
+
+        multiCheck(c3);
+    </script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <script>
+        $(document).ready(function () {
+
+            var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+                removeItemButton: true,
+                maxItemCount: 5,
+                searchResultLimit: 5,
+                renderChoiceLimit: 5
+            });
+
+
+        });
+    </script>
+</body>
+
+
+

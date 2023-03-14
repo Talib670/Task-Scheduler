@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "edit";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<style>
+
+    @@media (min-width: 1200px) {
+        .container-fluid-full #content {
+            width: 87.578%;
+            padding: 28px;
+            margin: 0 0;
+            margin-left: 33.422%;
+        }
+    }
+</style>
+<div id="content" class="span10">
+    <div class="container">
+        @foreach (var i in ViewBag.Campaigns)
+        {
+
+            <br />
+            <br />
+            <div id="" class="span12">
+                 <form class="form-horizontal" action="/Home/addsource" style="display:inline;" method="post" enctype="multipart/form-data">
+                            <fieldset>
+                                 <input style="display:none;" name="tid" value="@i.Id">
+                                <div class="row-fluid ">
+                                    <div class="box span4" style="min-width:500px">
+                                        <div class="box-header">
+                                            <h2><i class="icon-edit"></i>Provider Information</h2>
+                                            <div class="box-icon">
+                                                <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="box-content">
+                                            <input type="hidden" name="category_name" value="Source Information">
+                                            <input type="hidden" name="table_name" value="sources">
+                                            <input type="hidden" name="custid" value="">
+                                            <div class="control-group">
+                                                <label class="control-label" for="sources:vendorid">Provider</label>
+                                                <div class="controls">
+                                                <select name="vendorname" id="selectsources:vendorid">
+                                                    @foreach (var item in ViewBag.vendor)
+                                                    {
+
+
+                                                    <option value="@item.Name (@item.Id)">@item.Name (@item.Id)</option>
+                                                    }
+                                                    </select></div>
+                                            </div><div class="control-group">
+                                                <label class="control-label" for="sourcecompanyname">Source Company Name</label>
+                                        <div class="controls"><input type="text" class="input-large" name="sourcecompanyname" id="sources:sourcecompanyname" value="@i.sourcecompanyname"></div>
+                                            </div><div class="control-group">
+                                                <label class="control-label" for="status">Status</label>
+                                                <div class="controls"><select name="status" id="selectsources:status"><option value="Active">Active</option><option value="Suspended"> Suspended</option></select></div>
+                                            </div><div class="control-group">
+                                                <label class="control-label" for="sources:rate">Rate</label>
+                                                <div class="controls"><input type="text" class="input-large" name="rate" id="sources:rate" value=""></div>
+                                            </div>
+                                           <div class="control-group">
+                                                <label class="control-label" for="sources:dupe_check">Dupe Check</label>
+                                                <div class="controls"><select name="dupe_check" id="selectsources:dupe_check"><option value="Disabled">Disabled</option><option value="Source Only">Source Only</option><option value="Global"> Global</option><option value="Source Group">Source Group</option></select></div>
+                                            </div><div class="control-group">
+                                                <label class="control-label" for="sources:append"></label>
+                                                <div class="controls"><label class="checkbox inline"><input type="hidden" name="append" value="0"></label><label class="checkbox inline"><input type="checkbox" name="sources:append" id="sources:append" value="1">Append Dupes</label></div>
+                                            </div><div class="control-group">
+                                                <label class="control-label" for="sources:use_as_suppression_list"></label>
+                                                <div class="controls"><label class="checkbox inline"><input type="hidden" name="sources:use_as_suppression_list" value="0"></label><label class="checkbox inline"><input type="checkbox" name="sources:use_as_suppression_list" id="sources:use_as_suppression_list" value="1">Use as Suppression List</label></div>
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                    </div>
+                                </div>                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            </fieldset>
+                        </form>
+
+
+
+               </div>
+
+        }
+
+    </div>
+</div>  

@@ -1,0 +1,312 @@
+﻿
+@{
+    ViewData["Title"] = "login";
+    Layout = "~/Views/Layouts/_loginLayout.cshtml";
+}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student FinTech</title>
+
+
+<link rel="icon" href="~/nfd/assets/images/favicon-32x32.png" type="image/png" />
+<!--plugins-->
+<link href="~/nfd/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+<link href="~/nfd/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+<link href="~/nfd/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+     loader
+<link href="~/nfd/assets/css/pace.min.css" rel="stylesheet" />
+<script src="~/nfd/assets/js/pace.min.js"></script>
+<!-- Bootstrap CSS -->
+<link href="~/nfd/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/nfd/assets/css/bootstrap-extended.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link href="~/nfd/assets/css/app.css" rel="stylesheet">
+<link href="~/nfd/assets/css/icons.css" rel="stylesheet">
+<style>
+    .footlogo {
+        /* display: block; */
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 286px;
+        margin: -130px auto !important;
+    }
+    #flexSwitchCheckChecked:focus {
+        background-color: #037de2 !important;
+    }
+    input::placeholder {
+        color: white !important;
+        /*  font-size:18px !important;*/
+        opacity: 1 !important;
+        margin-top: 5px !important;
+    }
+    input {
+        background-color: #a2a5a1 !important;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+</style>
+
+<body onload=" getcookiedata()" class="bg-login" style="background: linear-gradient(90deg, #1E292B 0%, #273132 20.83%, #313735 40.62%, #3E413A 60.94%, #4A4B43 80.21%, #5A5748 100%);">
+
+    <!--wrapper-->
+    <div class="wrapper">
+        <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
+            <div class="container-fluid">
+                @if (ViewBag.incorrect == "incorect")
+                {
+                    <div class="row">
+                        <p style="padding-bottom:3%;color: red; text-align: center;">Username or password is incorrect.</p>
+
+                    </div>
+                }
+                @if (ViewBag.incorrect == "locked")
+                {
+                    <div class="row">
+                        <p style="padding-bottom: 3%;color: red; text-align: center;">Account has beed Locked for 30 minutes .</p>
+
+                    </div>
+                }
+
+                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                    <div class="col mx-auto">
+                        <div class="mb-5 text-center">
+                            <img src="https://www.jdatlantic.com/wp-content/uploads/2022/09/JD-Atlantic-Logo_final.jpg" alt="Email Deployment" class="footlogo">
+
+                        </div>
+
+                        <div class="">
+
+                            <div class="text-left hidden" style="display:none;">
+                                <h3 style=" font-size: 30px; color:white;" class="">Sign in to Cosmopolitan</h3>
+
+                            </div>
+                            <div class="row hidden" style="display:none;">
+                                <div class="col-md-5">
+                                    <hr style="color: white;">
+                                </div>
+                                <div class="col-md-1">
+                                    <span style="color:white; font-size: 18px;  ">Or</span>
+                                </div>
+                                <div class="col-md-5">
+                                    <hr style="color: white;">
+                                </div>
+                            </div>
+                            <div class="login-separater text-center mb-4" style="display:none;">
+                                <span style="background: linear-gradient(90deg, #1E292B 5%, #273132 20.83%, #313735 40.62%, #3E413A 104.94%, #4A4B43 80.21%, #5A5748 120%); font-size: 18px; padding: 20px; ">Or</span>
+                                <hr style="background-color:white;">
+                            </div>
+                            <div class="form-body">
+
+                                <form class="row g-3" action="/Home/checkvalid" method="post">
+                                    <div class="col-12">
+                                        <label style="color:white;" for="inputEmailAddress" class="form-label">Username or Email Address</label>
+                                        <input type="email" class="form-control" id="inputEmailAddress" name="username" placeholder="Email Address">
+                                    </div>
+                                    <div class="col-12">
+                                        <label style="color:white;" for="inputChoosePassword" class="form-label">Password</label>
+                                        <div class="input-group" id="show_hide_password">
+                                            <a href="javascript:;" class="input-group-text bg-transparent" style="
+    background-color: #a2a5a1 !important;
+">
+                                                <i class="bx bx-show" style="
+    color: white;
+"></i>
+                                            </a><input type="text" class="form-control border-end-0" name="password" id="inputChoosePassword" placeholder="Enter Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <a href="authentication-forgot-password.html">Forgot Password ?</a>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check form-switch">
+                                            <input onclick="setcookie()" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                                            <label class="form-check-label" for="flexSwitchCheckChecked" style="
+    color: white;
+">Remember Me</label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end row-->
+    </div>
+    <style>
+        a {
+            font-size: 13px !important;
+            color: white !important;
+            text-decoration: none !important;
+        }
+    </style>
+    <link href="~/nfd/assets/css/icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <div style="z-index:20;background: linear-gradient(90deg,#5A5748 100%, #1E292B 0%, #273132 20.83%, #313735 40.62%, #3E413A 60.94%, #4A4B43 80.21%);">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div>
+                    <img src="https://cosmopolitancg.com/assets/img/Cosmopolitan_All_White.png" alt="Cosmopolitan CG" class="small-caption" style=" width: 17em; height: 15em; margin-top: -3em; ">
+                    <p style="font-size: xx-small; margin-top: 3em; margin-bottom: 2em; padding-left: 10%; color: white;"> Copyright, @@ 2022 cosmopolitancg LLC. All rights reserved.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="line-height: 6px;color: white">
+                <h2 style="font-size: 16px;;
+color: #ffffff;
+text-transform: uppercase;
+line-height: 16px;
+font-weight: 600;
+margin: 26px 0px 10px 0px;
+padding: 0px 0px 0px 0px;
+text-align: left;">
+                    HISTORY
+                </h2>
+                <br><br>
+                <p>The Cosmopolitan Consumer Group,</p>
+                <p>LLC 1309 Coffeen Ave. Suite 4521</p>
+                <p>Sheridan, Wyoming 82801</p>
+                <p>info@cosmopolitanCG.com</p>
+            </div>
+            <div class="col-md-3" style="line-height: 6px;color: white">
+                <h2 style="font-size: 16px;;
+color: #ffffff;
+text-transform: uppercase;
+line-height: 16px;
+font-weight: 600;
+margin: 26px 0px 10px 0px;
+padding: 0px 0px 0px 0px;
+text-align: left;">
+                    SITE LINKS
+                </h2>
+                <br><br>
+                <p><i class="bx bx-right-arrow-alt"></i><a href="http://cosmopolitancg.com/#about">About</a></p>
+                <p><i class="bx bx-right-arrow-alt"></i><a target="_blank" href="http://cosmopolitancg.com/#advertisers">Advertisers / Publishers</a></p>
+                <p><i class="bx bx-right-arrow-alt"></i> <a target="_blank" href="https://sft.everflowclient.io/advertiser/signup?q=2WF5KC">Advertisers</a></p>
+                <p><i class="bx bx-right-arrow-alt"></i><a target="_blank" href="https://sft.everflowclient.io/advertiser/signup?q=2WF5KC">Affiliates</a></p>
+                <p><i class="bx bx-right-arrow-alt"></i><a target="_blank" href="http://cosmopolitancg.com/#contact">Contact</a></p>
+                <p><i class="bx bx-right-arrow-alt"></i><a target="_blank" href="https://sft.everflowclient.io/login">Login</a></p>
+
+
+
+            </div>
+            <div class="col-md-3" style="line-height: 6px;color: white;">
+                <h2 style="font-size: 16px;;
+            color: #ffffff;
+            text-transform: uppercase;
+            line-height: 10px;
+            font-weight: 600;
+            margin: 26px 0px 10px 0px;
+            padding: 0px 0px 0px 0px;
+            text-align: left;
+        ">
+                    CONTACT INFO
+                </h2>
+                <br><br>
+                <p>The Cosmopolitan Consumer Group, LLC</p>
+                <p>1309 Coffeen Ave. Suite 4521</p>
+                <p>Sheridan, Wyoming 82801</p>
+                <p>info@cosmopolitanCG.com</p>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--end wrapper-->
+    <!-- Bootstrap JS -->
+    <script src="~/nfd/assets/js/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="~/nfd/assets/js/jquery.min.js"></script>
+    <script src="~/nfd/assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="~/nfd/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="~/nfd/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <!--Password show & hide js -->
+    <script>
+
+        function setcookie() {
+         
+            var u = document.getElementById('inputEmailAddress').value;
+            var p = document.getElementById('inputChoosePassword').value;
+            
+
+            document.cookie = "myusrname=" + u + ";path=/";
+            document.cookie = "mypswd=" + p + ";path=/";
+        }
+
+
+        function getcookiedata() {
+          
+            console.log(document.cookie);
+
+            var user = getCookie('myusrname');
+            var pswd = getCookie('mypswd');
+
+            document.getElementById('inputEmailAddress').value = user;
+            document.getElementById('inputChoosePassword').value = pswd;
+
+        }
+
+
+
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass("bx-hide");
+            $('#show_hide_password i').removeClass("bx-show");
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+    </script>
+
+
+
+    <!--app JS-->
+    <script src="~/nfd/assets/js/app.js"></script>
+</body>
+

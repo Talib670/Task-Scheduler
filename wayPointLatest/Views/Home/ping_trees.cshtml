@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "ping_trees";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<div id="content" class="span10">
+    <div class="row-fluid">
+        <div class="box span12">
+            <div class="box-header" data-original-title="">
+                <h2><i class="icon-sitemap"></i><span class="break"></span>Ping Trees</h2>
+                <div class="box-icon">
+                    <a href="ping_tree_detail.php?task=add" title="" data-rel="tooltip" class="btn-link btn-setting" data-original-title="Add Campaign"><i class="icon-plus-sign"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal" action="ping_trees.php" method="get" style="display:inline;">
+                    <select name="Status" id="selectstatusCombo">
+                        <option value="All">All</option>
+                        <option value="Active" selected="">Active</option>
+                        <option value="Suspended">Suspended</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                    <input type="submit" class="btn btn-primary" value="Filter">
+                    <br><br>
+                    <div id="campaignGrid_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="row-fluid">
+                            <div class="span3"><div class="dataTables_info" id="campaignGrid_info">Showing 0 to 0 of 0 entries</div><div id="campaignGrid_length" class="dataTables_length"><label><select size="1" name="campaignGrid_length" aria-controls="campaignGrid"><option value="500">500</option><option value="100" selected="selected">100</option><option value="50">50</option><option value="25">25</option><option value="-1">All</option></select> records per page</label></div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div><div class="span3"><div class="dataTables_filter" id="campaignGrid_filter"><label>Search: <input type="text" aria-controls="campaignGrid"></label></div></div><table id="campaignGrid" class="table table-condensed table-striped table-bordered datatable dataTable" aria-describedby="campaignGrid_info">
+                                <thead>
+                                    <tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" : activate to sort column descending" style="width: 2px;"> </th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Ping Tree ID: activate to sort column ascending" style="width: 83px;">Ping Tree ID</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Customer: activate to sort column ascending" style="width: 68px;">Customer</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Ping Tree: activate to sort column ascending" style="width: 65px;">Ping Tree</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Limit: activate to sort column ascending" style="width: 36px;">Limit</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Total Assigned: activate to sort column ascending" style="width: 101px;">Total Assigned</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Total Remaining: activate to sort column ascending" style="width: 110px;">Total Remaining</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Today's Limit: activate to sort column ascending" style="width: 91px;">Today's Limit</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Assigned Today: activate to sort column ascending" style="width: 110px;">Assigned Today</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Delivered Today: activate to sort column ascending" style="width: 110px;">Delivered Today</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Rejected Today: activate to sort column ascending" style="width: 105px;">Rejected Today</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Remaining Today: activate to sort column ascending" style="width: 118px;">Remaining Today</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 45px;">Status</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="campaignGrid" rowspan="1" colspan="1" aria-label="Options: activate to sort column ascending" style="width: 55px;">Options</th></tr>
+                                </thead>
+
+                                <tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td valign="top" colspan="14" class="dataTables_empty">No data available in table</td></tr></tbody>
+                            </table><div class="row-fluid"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+    <div class="row-fluid">
+        <div class="box span12">
+            <div class="box-header" data-original-title="">
+                <h2><i class="icon-user-md"></i><span class="break"></span>Ping Tree Groups</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal" action="business_logic/execute.php?task=addgroup" method="get" style="display:inline;">
+                    <div class="control-group">
+                        <label class="control-label" for="selectGroup">Groups</label>
+                        <div class="controls">
+                            <select size="10" name="selectGroup" width="300" style="width: 300px">
+                                <option value="1">Default Group</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="text" class="input-xlarge" name="newGroup" id="newGroup" value="">
+                    <input type="submit" name="AddGroup" class="btn btn-primary" value="Add Group">
+                    <input type="submit" name="DeleteGroup" class="btn btn-danger" value="Delete Group">
+                </form>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+</div>
+</div>
+</div>
+

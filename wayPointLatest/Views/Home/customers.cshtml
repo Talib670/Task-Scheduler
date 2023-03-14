@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewData["Title"] = "customers";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<div id="content" class="span10">
+    <div class="row-fluid">
+        <div class="box span12">
+            <div class="box-header" data-original-title="">
+                <h2><i class="icon-user-md"></i><span class="break"></span>Customers</h2>
+                <div class="box-icon">
+                    <a href="customer_detail.php?task=add" class="btn-link"><i class="icon-plus-sign"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <div id="customerGrid_wrapper" class="dataTables_wrapper" role="grid">
+                    <div class="row-fluid">
+                        <div class="span3"><div class="dataTables_info" id="customerGrid_info">Showing 1 to 4 of 4 entries</div><div id="customerGrid_length" class="dataTables_length"><label><select size="1" name="customerGrid_length" aria-controls="customerGrid"><option value="500">500</option><option value="100" selected="selected">100</option><option value="50">50</option><option value="25">25</option><option value="-1">All</option></select> records per page</label></div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div><div class="span3"><div class="dataTables_filter" id="customerGrid_filter"><label>Search: <input type="text" aria-controls="customerGrid"></label></div></div><table id="customerGrid" class="table table-condensed table-striped table-bordered datatable dataTable" aria-describedby="customerGrid_info">
+                            <thead>
+                                <tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Cust ID: activate to sort column descending" style="width: 86px;">Cust ID</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="Customer Name: activate to sort column ascending" style="width: 196px;">Customer Name</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="City: activate to sort column ascending" style="width: 51px;">City</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="State: activate to sort column ascending" style="width: 63px;">State</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="Zip: activate to sort column ascending" style="width: 42px;">Zip</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="Phone 1: activate to sort column ascending" style="width: 95px;">Phone 1</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="Phone 2: activate to sort column ascending" style="width: 95px;">Phone 2</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 131px;">Status</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="customerGrid" rowspan="1" colspan="1" aria-label="Options: activate to sort column ascending" style="width: 415px;">Options</th></tr>
+                            </thead>
+
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                <tr class="odd">
+                                    <td class="center  sorting_1">1</td>
+                                    <td class="center ">Example Customer</td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "><span class="label label-warning">Not Active</span></td>
+                                    <td class="center ">
+                                        <span class="label">
+                                            <a class="btn btn-info" href="customer_detail.php?task=edit&amp;custid=1" title="" data-rel="tooltip" data-original-title="Edit this customer">
+                                                <i class="icon-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=rmmonetizer&amp;custid=1" onclick="return confirm('Are you sure you want to delete this customer?');" title="" data-rel="tooltip" data-original-title="Delete this customer">
+                                                <i class="icon-trash "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="../campaigns.php?monetizer=1" title="" data-rel="tooltip" data-original-title="View campaigns"><i class="icon-rss "></i></a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=disablemonetizer&amp;custid=1" onclick="return confirm('Are you sure you want to disable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Disable campaigns">
+                                                <i class="icon-thumbs-down "></i>
+                                            </a>
+                                            <a class="btn btn-success" href="business_logic/execute.php?task=enablemonetizer&amp;custid=1" onclick="return confirm('Are you sure you want to enable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Enable campaigns">
+                                                <i class="icon-thumbs-up "></i>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="center  sorting_1">2</td>
+                                    <td class="center ">GMG</td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "><span class="label label-success">Active</span></td>
+                                    <td class="center ">
+                                        <span class="label">
+                                            <a class="btn btn-info" href="customer_detail.php?task=edit&amp;custid=2" title="" data-rel="tooltip" data-original-title="Edit this customer">
+                                                <i class="icon-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=rmmonetizer&amp;custid=2" onclick="return confirm('Are you sure you want to delete this customer?');" title="" data-rel="tooltip" data-original-title="Delete this customer">
+                                                <i class="icon-trash "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="../campaigns.php?monetizer=2" title="" data-rel="tooltip" data-original-title="View campaigns"><i class="icon-rss "></i></a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=disablemonetizer&amp;custid=2" onclick="return confirm('Are you sure you want to disable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Disable campaigns">
+                                                <i class="icon-thumbs-down "></i>
+                                            </a>
+                                            <a class="btn btn-success" href="business_logic/execute.php?task=enablemonetizer&amp;custid=2" onclick="return confirm('Are you sure you want to enable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Enable campaigns">
+                                                <i class="icon-thumbs-up "></i>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="center  sorting_1">3</td>
+                                    <td class="center ">Wisdom</td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "><span class="label label-success">Active</span></td>
+                                    <td class="center ">
+                                        <span class="label">
+                                            <a class="btn btn-info" href="customer_detail.php?task=edit&amp;custid=3" title="" data-rel="tooltip" data-original-title="Edit this customer">
+                                                <i class="icon-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=rmmonetizer&amp;custid=3" onclick="return confirm('Are you sure you want to delete this customer?');" title="" data-rel="tooltip" data-original-title="Delete this customer">
+                                                <i class="icon-trash "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="../campaigns.php?monetizer=3" title="" data-rel="tooltip" data-original-title="View campaigns"><i class="icon-rss "></i></a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=disablemonetizer&amp;custid=3" onclick="return confirm('Are you sure you want to disable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Disable campaigns">
+                                                <i class="icon-thumbs-down "></i>
+                                            </a>
+                                            <a class="btn btn-success" href="business_logic/execute.php?task=enablemonetizer&amp;custid=3" onclick="return confirm('Are you sure you want to enable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Enable campaigns">
+                                                <i class="icon-thumbs-up "></i>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="center  sorting_1">4</td>
+                                    <td class="center ">Doug</td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "></td>
+                                    <td class="center "><span class="label label-success">Active</span></td>
+                                    <td class="center ">
+                                        <span class="label">
+                                            <a class="btn btn-info" href="customer_detail.php?task=edit&amp;custid=4" title="" data-rel="tooltip" data-original-title="Edit this customer">
+                                                <i class="icon-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=rmmonetizer&amp;custid=4" onclick="return confirm('Are you sure you want to delete this customer?');" title="" data-rel="tooltip" data-original-title="Delete this customer">
+                                                <i class="icon-trash "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="../campaigns.php?monetizer=4" title="" data-rel="tooltip" data-original-title="View campaigns"><i class="icon-rss "></i></a>
+                                            <a class="btn btn-danger" href="business_logic/execute.php?task=disablemonetizer&amp;custid=4" onclick="return confirm('Are you sure you want to disable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Disable campaigns">
+                                                <i class="icon-thumbs-down "></i>
+                                            </a>
+                                            <a class="btn btn-success" href="business_logic/execute.php?task=enablemonetizer&amp;custid=4" onclick="return confirm('Are you sure you want to enable all campaigns for this monetizer?');" title="" data-rel="tooltip" data-original-title="Enable campaigns">
+                                                <i class="icon-thumbs-up "></i>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><div class="row-fluid"></div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+</div>
+</div>
+</div>
+

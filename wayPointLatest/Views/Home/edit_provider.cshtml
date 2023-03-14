@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "edit";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<style>
+
+@@media (min-width: 1200px)
+{
+.container-fluid-full #content {
+    width: 87.578%;
+    padding: 28px;
+    margin: 0 0;
+    margin-left: 33.422%;
+}
+}
+</style>
+<div id="content" class="span10">
+    <div class="container">
+@foreach (var i in ViewBag.provider)
+{
+
+            <br />
+            <br />
+            <div id="" class="span12">
+
+
+                <form class="form-horizontal" action="/Home/addprovider" style="display:inline;" method="post" enctype="multipart/form-data">
+                    @*<form class="form-horizontal" action="/api/Values" style="display:inline;" method="post" enctype="multipart/form-data">*@
+                    <fieldset>
+                        <input style="display:none;" name="tid" value="@i.Id">
+                        <div class="row-fluid ">
+                            <div class="box span4" style="min-width:500px">
+                                <div class="box-header">
+                                    <h2><i class="icon-edit"></i>Provider Information</h2>
+                                    <div class="box-icon">
+                                        <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                                    </div>
+                                </div>
+                                <div class="box-content">
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="vendor:vendor_name">Provider Name</label>
+                                        <div class="controls"><input type="text" class="input-large" name="vendorname" id="vendor:vendor_name" value="@i.Name"></div>
+                                    </div><div class="control-group">
+                                        <label class="control-label" for="vendor:address1">Address</label>
+                                        <div class="controls"><input type="text" class="input-large" name="address" id="vendor:address1" value="@i.address"></div>
+                                    </div><div class="control-group">
+                                        <label class="control-label" for="vendor:state">State</label>
+                                        <div class="controls"><select name="state" id="selectvendor:state"><option value="" selected=""></option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NJ">NJ</option><option value="NV">NV</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option></select></div>
+                                    </div><div class="control-group">
+                                        <label class="control-label" for="zip">Zip</label>
+                                        <div class="controls"><input type="text" class="input-large" name="zip" id="vendor:zip" value="@i.zip"></div>
+                                    </div><div class="control-group">
+                                        <label class="control-label" for="phone">Phone</label>
+                                        <div class="controls"><input type="text" class="input-large" name="phone" id="vendor:phone1" value="@i.phone"></div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="vendor:email">Email</label>
+                                        <div class="controls"><input type="text" class="input-large" name="email" id="vendor:email" value="@i.email"></div>
+                                    </div><div class="control-group">
+                                        <label class="control-label" for="vendor:contact">Contact</label>
+                                        <div class="controls"><input type="text" class="input-large" name="contact" id="vendor:contact" value="@i.contact"></div>
+                                    </div><div class="control-group">
+                                        <label class="control-label" for="vendor:notes">Notes</label>
+                                        <div class="controls"><input type="text" class="input-large" name="notes" id="vendor:notes" value="@i.notes"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </fieldset>
+                </form>
+            </div>
+
+                       }
+
+                               </div>  
+                               </div>  

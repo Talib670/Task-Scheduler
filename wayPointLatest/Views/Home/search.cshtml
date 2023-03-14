@@ -1,0 +1,704 @@
+﻿
+@{
+    ViewData["Title"] = "search";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<div id="content" class="span12">
+    <div class="row-fluid">
+        <div class="box span12">
+            <div class="box-header" data-original-title="">
+                <h2><i class="icon-briefcase"></i><span class="break"></span>Saved Searches</h2>
+            </div>
+            <div class="box-content">
+                <table id="searchGrid" class="table table-condensed table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th> </th>
+                            <th>Name</th>
+                            <th>URL</th>
+                            <th>Create Date</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+    <div class="row-fluid">
+        <div class="box span6" style="min-width:710px">
+            <div class="box-header">
+                <h2><i class="icon-edit"></i>View Assignments</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal" action="results.php" method="get" style="display:inline;">
+                    <input type="hidden" name="task" value="searchAssignments">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="va_startDate">Start Date</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="startDate" id="va_startDate" value="01/06/23">&nbsp;&nbsp;<i class="icon-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_endDate">End Date</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="endDate" id="va_endDate" value="01/06/23">&nbsp;&nbsp;<i class="icon-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_selectCustomer">Campaign</label>
+                            <div class="controls">
+                                <select name="selectCustomer[]" id="va_selectCustomer" multiple="" size="10" width="300px">
+                                    <option value="All" selected="">All</option>
+                                    <option value="3">Doug - Unclaimed Govt 96 - 3</option>
+                                    <option value="1">GMG - Auto - 1</option>
+                                    <option value="2">Wisdom - Wisdom Live - 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_selectGroup">Campaign Group</label>
+                            <div class="controls">
+                                <select name="selectGroup[]" id="va_selectGroup" multiple="" size="10">
+                                    <option value="All" selected="">All</option>
+                                    <option value="1">Default Group</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="rowLimit">Row Limit</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="rowLimit" id="rowLimit" value="100">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <a class="span5"></a>
+                            <input type="submit" class="btn btn-primary" value="Search">
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+        </div><!--/span-->
+        <div class="box span6" style="min-width:710px">
+            <div class="box-header">
+                <h2><i class="icon-edit"></i>View Inventory</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal" action="results.php" method="get" style="display:inline;">
+                    <input type="hidden" name="task" value="searchInventory">
+                    <input type="hidden" name="search_guid" value="a28976310f94e33c85cb5717c3d3112b">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="startDate">Start Date</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="startDate" id="startDate" value="01/06/23">&nbsp;&nbsp;<i class="icon-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="endDate">End Date</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="endDate" id="endDate" value="01/06/23">&nbsp;&nbsp;<i class="icon-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="selectSource">Sources</label>
+                            <div class="controls">
+                                <select id="selectSource" name="selectSource[]" multiple="" size="10">
+                                    <option value="All" selected="">All</option>
+                                    <option value="87">Cosmo - Affordable Housing - 87</option>
+                                    <option value="88">Cosmo - Affordable Housing CCPA - 88</option>
+                                    <option value="86">Cosmo - Affordable Housing DNC - 86</option>
+                                    <option value="89">Cosmo - Affordable Housing Unsubscribe - 89</option>
+                                    <option value="76">Cosmo - Credit Guidebook - 76</option>
+                                    <option value="93">Cosmo - creditguidebook CCPA - 93</option>
+                                    <option value="77">Cosmo - Credit Guidebook Dupes - 77</option>
+                                    <option value="94">Cosmo - creditguidebook Unsubscribe - 94</option>
+                                    <option value="82">Cosmo - Employment - 82</option>
+                                    <option value="85">Cosmo - Employment CCPA - 85</option>
+                                    <option value="84">Cosmo - Employment DNC - 84</option>
+                                    <option value="83">Cosmo - Employment Unsubscribe - 83</option>
+                                    <option value="98">Cosmo - Esports national - 98</option>
+                                    <option value="100">Cosmo - Esports national CCPA - 100</option>
+                                    <option value="99">Cosmo - Esports national unsubscribe - 99</option>
+                                    <option value="95">Cosmo - Freephones - 95</option>
+                                    <option value="97">Cosmo - freephones ccpa - 97</option>
+                                    <option value="96">Cosmo - freephones unsubscribe - 96</option>
+                                    <option value="90">Cosmo - senior savings - 90</option>
+                                    <option value="91">Cosmo - senior savings CCPA - 91</option>
+                                    <option value="92">Cosmo -  senior savings Unsubscribe - 92</option>
+                                    <option value="78">Cosmo - Unclaimed Govt - 78</option>
+                                    <option value="81">Cosmo - Unclaimed Govt CCPA - 81</option>
+                                    <option value="80">Cosmo - Unclaimed Govt DNC - 80</option>
+                                    <option value="79">Cosmo - Unclaimed Govt Unsubscribe - 79</option>
+                                    <option value="20">MAIN SOURCE  - Auto Insurance - 20</option>
+                                    <option value="4">MAIN SOURCE  - Co Reg - 4</option>
+                                    <option value="74">MAIN SOURCE  - Credit - 74</option>
+                                    <option value="15">MAIN SOURCE  - Crypto - 15</option>
+                                    <option value="5">MAIN SOURCE  - Debt - 5</option>
+                                    <option value="36">MAIN SOURCE  - DUPE Auto Insurance - 36</option>
+                                    <option value="21">MAIN SOURCE  - DUPE Co Reg - 21</option>
+                                    <option value="72">MAIN SOURCE  - DUPE Credit - 72</option>
+                                    <option value="32">MAIN SOURCE  - DUPE Crypto - 32</option>
+                                    <option value="22">MAIN SOURCE  - DUPE Debt - 22</option>
+                                    <option value="68">MAIN SOURCE  - DUPE Grants - 68</option>
+                                    <option value="23">MAIN SOURCE  - DUPE Health - 23</option>
+                                    <option value="24">MAIN SOURCE  - DUPE Job Seekers - 24</option>
+                                    <option value="25">MAIN SOURCE  - DUPE Life Insurance - 25</option>
+                                    <option value="26">MAIN SOURCE  - DUPE Mortgage - 26</option>
+                                    <option value="33">MAIN SOURCE  - DUPE Nutra - 33</option>
+                                    <option value="27">MAIN SOURCE  - DUPE Payday - 27</option>
+                                    <option value="28">MAIN SOURCE  - DUPE Real Estate - 28</option>
+                                    <option value="57">MAIN SOURCE  - Dupe RTF Co Reg - 57</option>
+                                    <option value="73">MAIN SOURCE  - Dupe RTF Credit - 73</option>
+                                    <option value="39">MAIN SOURCE  - Dupe RTF Crypto - 39</option>
+                                    <option value="55">MAIN SOURCE  - Dupe RTF Debt - 55</option>
+                                    <option value="69">MAIN SOURCE  - Dupe RTF Grants - 69</option>
+                                    <option value="53">MAIN SOURCE  - Dupe RTF Health Insurance - 53</option>
+                                    <option value="51">MAIN SOURCE  - Dupe RTF Job Seekers - 51</option>
+                                    <option value="49">MAIN SOURCE  - Dupe RTF Life Insurance - 49</option>
+                                    <option value="35">MAIN SOURCE  - Dupe RTF Mortgage - 35</option>
+                                    <option value="37">MAIN SOURCE  - Dupe RTF Nutra - 37</option>
+                                    <option value="47">MAIN SOURCE  - Dupe RTF Payday - 47</option>
+                                    <option value="34">MAIN SOURCE  - Dupe RTF Real Estate - 34</option>
+                                    <option value="45">MAIN SOURCE  - Dupe RTF Seniors - 45</option>
+                                    <option value="61">MAIN SOURCE  - Dupe RTF Solar - 61</option>
+                                    <option value="43">MAIN SOURCE  - Dupe RTF Sweepstakes - 43</option>
+                                    <option value="65">MAIN SOURCE  - Dupe RTF Travel - 65</option>
+                                    <option value="41">MAIN SOURCE  - Dupe RTF Voters - 41</option>
+                                    <option value="29">MAIN SOURCE  - DUPE Seniors - 29</option>
+                                    <option value="60">MAIN SOURCE  - DUPE Solar - 60</option>
+                                    <option value="30">MAIN SOURCE  - DUPE Sweepstakes - 30</option>
+                                    <option value="64">MAIN SOURCE  - DUPE Travel - 64</option>
+                                    <option value="31">MAIN SOURCE  - DUPE Voters - 31</option>
+                                    <option value="70">MAIN SOURCE  - Grants - 70</option>
+                                    <option value="6">MAIN SOURCE  - Health - 6</option>
+                                    <option value="7">MAIN SOURCE  - Job Seekers - 7</option>
+                                    <option value="8">MAIN SOURCE  - Life Insurance - 8</option>
+                                    <option value="9">MAIN SOURCE  - Mortgage - 9</option>
+                                    <option value="16">MAIN SOURCE  - Nutra - 16</option>
+                                    <option value="10">MAIN SOURCE  - Payday - 10</option>
+                                    <option value="11">MAIN SOURCE  - Real Estate - 11</option>
+                                    <option value="59">MAIN SOURCE  - RTF Auto Insurance - 59</option>
+                                    <option value="58">MAIN SOURCE  - RTF Co Reg - 58</option>
+                                    <option value="75">MAIN SOURCE  - RTF Credit - 75</option>
+                                    <option value="40">MAIN SOURCE  - RTF Crypto - 40</option>
+                                    <option value="56">MAIN SOURCE  - RTF Debt - 56</option>
+                                    <option value="71">MAIN SOURCE  - RTF Grants - 71</option>
+                                    <option value="54">MAIN SOURCE  - RTF Health Insurance - 54</option>
+                                    <option value="52">MAIN SOURCE  - RTF Job Seekers - 52</option>
+                                    <option value="50">MAIN SOURCE  - RTF Life Insurance - 50</option>
+                                    <option value="18">MAIN SOURCE  - RTF Mortgage - 18</option>
+                                    <option value="38">MAIN SOURCE  - RTF Nutra - 38</option>
+                                    <option value="48">MAIN SOURCE  - RTF Payday - 48</option>
+                                    <option value="17">MAIN SOURCE  - RTF Real Estate - 17</option>
+                                    <option value="46">MAIN SOURCE  - RTF Seniors - 46</option>
+                                    <option value="63">MAIN SOURCE  - RTF Solar - 63</option>
+                                    <option value="44">MAIN SOURCE  - RTF Sweepstakes - 44</option>
+                                    <option value="67">MAIN SOURCE  - RTF Travel - 67</option>
+                                    <option value="42">MAIN SOURCE  - RTF Voters - 42</option>
+                                    <option value="12">MAIN SOURCE  - Seniors - 12</option>
+                                    <option value="62">MAIN SOURCE  - Solar - 62</option>
+                                    <option value="13">MAIN SOURCE  - Sweepstakes - 13</option>
+                                    <option value="66">MAIN SOURCE  - Travel - 66</option>
+                                    <option value="14">MAIN SOURCE  - Voters - 14</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_selectGroup">Source Groups</label>
+                            <div class="controls">
+                                <select name="selectGroup[]" id="va_selectGroup" multiple="" size="10">
+                                    <option value="All" selected="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_selectVertical">URL Categories</label>
+                            <div class="controls">
+                                <select name="selectVertical[]" id="va_selectVertical" multiple="" size="10">
+                                    <option value="All" selected="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_selectCampaignAssignedTo">Previously Assigned To</label>
+                            <div class="controls">
+                                <select name="selectCampaignAssignedTo[]" id="va_selectCampaignAssignedTo" multiple="" size="10">
+                                    <option value="All">Any</option>
+                                    <option value="3">Doug - Unclaimed Govt 96 - 3</option>
+                                    <option value="1">GMG - Auto - 1</option>
+                                    <option value="2">Wisdom - Wisdom Live - 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_campaignAssignedToLimit">Within</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="campaignAssignedToLimit" id="va_campaignAssignedToLimit" value="" placeholder="Days">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="va_selectCampaignNotAssignedTo">Never Assigned To</label>
+                            <div class="controls">
+                                <select name="selectCampaignNotAssignedTo[]" id="va_selectCampaignNotAssignedTo" multiple="" size="10">
+                                    <option value="All">Any</option>
+                                    <option value="3">Doug - Unclaimed Govt 96 - 3</option>
+                                    <option value="1">GMG - Auto - 1</option>
+                                    <option value="2">Wisdom - Wisdom Live - 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <span>
+                                <label class="control-label" for="va_campaignNeverAssignedToLimit">Within</label>
+                                <div class="controls">
+                                    <input type="text" class="input-xlarge" name="campaignNeverAssignedToLimit" id="va_campaignNeverAssignedToLimit" value="" placeholder="Days">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="control-group">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label" for="selectFieldName">Field</label>
+                                            <div class="controls">
+                                                <select name="selectFieldName[]" id="va_selectFieldName[]" style="width: 150px">
+                                                    <option value=""></option>
+                                                    <option value="state">State</option>
+                                                    <option value="zip">Zip</option>
+                                                    <option value="email_domain">Email Domain</option>
+                                                    <option value="phone1">Phone 1</option>
+                                                    <option value="phone2">Phone 2</option>
+                                                    <option value="posturl">Post URL</option>
+                                                    <option value="assigned">Assigned</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="nationality">Nationality</option>
+                                                    <option value="has_full_postal">Has Full Postal</option>
+                                                    <option value="subscriber_score_bucket">Subscriber Score Bucket</option>
+                                                    <option value="subscriber_email_status">Subscriber Email Status</option>
+                                                    <option value="validationstatus">Validation Status</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="filterType[]" id="va_filterType[]" style="width: 150px">
+                                                &gt;
+                                                <option value=""></option>
+                                                <option value="contains">Contains</option>
+                                                <option value="notcontains">Does not Contain</option>
+                                                <option value="equal">Equals</option>
+                                                <option value="notequal">Not Equals</option>
+                                                <option value="notempty">Not empty</option>
+                                                <option value="empty">Empty</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="input-xlarge" name="searchValue[]" id="va_searchValue[]" value="" style="width: 120px">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="selectSortMethod">Sort Method</label>
+                            <div class="controls">
+                                <select id="selectSortMethod" name="selectSortMethod">
+                                    <option selected="" value="leadid">Lead ID</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="selectOrderType">Direction</label>
+                            <div class="controls">
+                                <select id="selectOrderType" name="selectOrderType">
+                                    <option value="ASC">ASC</option>
+                                    <option selected="" value="DESC">DESC</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="rowLimit">Row Limit</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" name="rowLimit" id="rowLimit" value="100">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="selectUniqueBy">Unique By</label>
+                            <div class="controls">
+                                <select id="selectUniqueBy" name="selectUniqueBy">
+                                    <option selected="" value="">----------</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone1">Phone1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <a class="span5"></a>
+                            <label class="checkbox inline"><input type="checkbox" name="groupBySource" id="groupBySource" value="1">Group results by Source</label>
+                        </div>
+                        <div class="control-group">
+                            <a class="span5"></a>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div><!--/row-->
+</div>
+</div>
+</div>
+</div>

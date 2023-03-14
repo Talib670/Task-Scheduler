@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "lead_mining";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<div id="content" class="span10">
+    <div class="row-fluid">
+        <div class="box span12">
+            <div class="box-header" data-original-title="">
+                <h2><i class="icon-user-md"></i><span class="break"></span>Lead Mining</h2>
+                <div class="box-icon">
+                    <a href="virtual_campaign_detail.php?task=add" class="btn-link"><i class="icon-plus-sign"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal" action="lead_mining.php" method="get" style="display:inline;">
+                    <br><br>
+                    <div id="virtualCampaignGrid_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="row-fluid">
+                            <div class="span3"><div class="dataTables_info" id="virtualCampaignGrid_info">Showing 0 to 0 of 0 entries</div><div id="virtualCampaignGrid_length" class="dataTables_length"><label><select size="1" name="virtualCampaignGrid_length" aria-controls="virtualCampaignGrid"><option value="500">500</option><option value="100" selected="selected">100</option><option value="50">50</option><option value="25">25</option><option value="-1">All</option></select> records per page</label></div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div><div class="span3"><div class="dataTables_filter" id="virtualCampaignGrid_filter"><label>Search: <input type="text" aria-controls="virtualCampaignGrid"></label></div></div><table id="virtualCampaignGrid" class="table table-condensed table-striped table-bordered datatable dataTable" aria-describedby="virtualCampaignGrid_info">
+                                <thead>
+                                    <tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 30px;">ID</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 62px;">Name</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Sources: activate to sort column ascending" style="width: 80px;">Sources</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Start Date: activate to sort column ascending" style="width: 103px;">Start Date</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="End Date: activate to sort column ascending" style="width: 92px;">End Date</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Unique By: activate to sort column ascending" style="width: 103px;">Unique By</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Assign To: activate to sort column ascending" style="width: 94px;">Assign To</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Random: activate to sort column ascending" style="width: 84px;">Random</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Limit: activate to sort column ascending" style="width: 54px;">Limit</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="# Found: activate to sort column ascending" style="width: 82px;"># Found</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 66px;">Status</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Progress: activate to sort column ascending" style="width: 89px;">Progress</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Elapsed: activate to sort column ascending" style="width: 79px;">Elapsed</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="virtualCampaignGrid" rowspan="1" colspan="1" aria-label="Options: activate to sort column ascending" style="width: 82px;">Options</th></tr>
+                                </thead>
+
+                                <tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td valign="top" colspan="14" class="dataTables_empty">No data available in table</td></tr></tbody>
+                            </table><div class="row-fluid"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+</div>
+</div>
+</div>
+

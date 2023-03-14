@@ -1,0 +1,237 @@
+﻿
+@{
+    ViewData["Title"] = "edit";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+<style>
+    .mt-100 {
+        margin-top: 100px
+    }
+
+    .choices {
+        display: flex;
+    }
+</style>
+<style>
+    .new-control.new-checkbox .new-control-indicator {
+        position: absolute;
+        top: 0.25rem;
+        left: 0;
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: white;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+        border-radius: 2px;
+        border: 2px solid;
+    }
+
+    .widget-content-area {
+        padding: 20px;
+        /*  border-radius: 13px;*/
+        position: relative;
+        background-color: #fff;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        -webkit-box-shadow: 0 2px 4px rgb(126 142 177 / 12%);
+        box-shadow: 0 2px 4px rgb(126 142 177 / 12%);
+    }
+    </style>
+<style>
+
+@@media (min-width: 1200px)
+{
+.container-fluid-full #content {
+    width: 87.578%;
+    padding: 28px;
+    margin: 0 0;
+    margin-left: 33.422%;
+}
+}
+</style>
+<div id="content" class="span10">
+    <div class="container">
+@foreach (var i in ViewBag.UserData)
+{
+
+            <br />
+            <br />
+<div id="" class="span12">
+                <form class="form-horizontal" action="/User/submitnewuser" style="display:inline;" method="post" id="adminroles" enctype="multipart/form-data" autocomplete="off">
+                    <fieldset>
+                        <input style="display:none;" name="userid" value="@i.AdminLoginId">
+                        <div class="row-fluid ">
+                            <div class="box span4" style="min-width:500px">
+                                <div class="box-header">
+                                    <h2><i class="icon-edit"></i>User Details</h2>
+                                    <div class="box-icon">
+                                        <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                                    </div>
+                                </div>
+                                <div class="box-content">
+
+                                    @*  <div class="control-group">
+                                <label class="control-label" for="customers:monetizer_id">Customer</label>
+                                <div class="controls"><select name="customers" id="selectcustomers:monetizer_id"><option value="" selected=""></option><option value="Doug">Doug</option><option value="Customer">Example Customer</option><option value="GMG">GMG</option><option value="Wisdom">Wisdom</option></select></div>
+                                </div>*@
+
+                                    <div class="control-group">
+                                        <label class="control-label">First Name</label>
+                                        <div class="controls"><input type="text" class="input-large" id="fname" name="fname" value="@i.FirstName"></div>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Last Name</label>
+                                        <div class="controls"><input type="text" class="input-large" id="lname" name="lname" value="@i.LastName"></div>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Role</label>
+
+
+                                        <div class="controls">
+                                            <select style="    padding-bottom: 0%;" id="change" class="input-large form-control" name="roll">
+                                                <option value="@i.SystemRoll">@i.SystemRoll </option>
+                                                <option value="Admin">Admin </option>
+                                                <option value="Editor">Editor </option>
+                                                <option value="Visitor">Visitor </option>
+
+
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="control-group access">
+                                        <label class="control-label" for="customers:SelectAttributes">Select Access</label>
+                                        <select name="access" class="input-large form-control" id="choices-multiple-remove-button" multiple>
+
+                                            <option value="Campaign">Campaign</option>
+                                            <option value="DataSource">Data Source </option>
+                                            <option value="Provider">Provider</option>
+
+
+                                        </select>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Skype</label>
+                                        <div class="controls"><input type="text" class="input-large" id="skype" name="skype" value="@i.SkypeAddress"></div>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Contact Number</label>
+                                        <div class="controls"><input type="text" class="input-large" id="contact" name="contact" value="@i.Contact"></div>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Email Address</label>
+                                        <div class="controls"><input type="text" class="input-large" id="gmail" name="gmail" value="@i.Gmail"></div>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Password</label>
+                                        <div class="controls">
+
+                                            <div class="input-group" id="show_hide_password">
+                                                <a href="javascript:;" class="input-group-text bg-transparent" style="
+    background-color: #a2a5a1 !important;
+">
+                                                    <i class="bx bx-show" style="
+    color: white;
+"></i>
+                                                </a><input type="text" required="" class="input-large   pass" name="password" id="inputChoosePassword" placeholder="Enter Password" value="@i.Password">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Image</label>
+                                        <div class="controls"><input style="    padding-bottom: 15%;" type="file" name="files" src="files" id="files" class="input-large "></div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </fieldset>
+                </form>
+            </div>
+
+                       }
+
+                               </div>  
+                               </div>
+<script>
+    $(document).ready(function () {
+
+        var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+            removeItemButton: true,
+            maxItemCount: 5,
+            searchResultLimit: 5,
+            renderChoiceLimit: 5
+        });
+
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#show_hide_password input').attr('type', 'password');
+        $('#show_hide_password i').addClass("bx-hide");
+        $('#show_hide_password i').removeClass("bx-show");
+        $("#show_hide_password a").on('click', function (event) {
+            event.preventDefault();
+            if ($('#show_hide_password input').attr("type") == "text") {
+                $('#show_hide_password input').attr('type', 'password');
+                $('#show_hide_password i').addClass("bx-hide");
+                $('#show_hide_password i').removeClass("bx-show");
+            } else if ($('#show_hide_password input').attr("type") == "password") {
+                $('#show_hide_password input').attr('type', 'text');
+                $('#show_hide_password i').removeClass("bx-hide");
+                $('#show_hide_password i').addClass("bx-show");
+            }
+        });
+    });
+</script>
+<script>
+<script>
+    $(document).ready(function () {
+        $('.access').hide();
+
+        $('#change').change(function () {
+
+            var Role = $("#change").val();
+            if (Role == "Editor") {
+
+                $('.access').show();
+                //$('#PATH').hide();
+                //$('#POP').hide();
+                //$('#Unclaimed').hide();
+                //$('#EXIT').hide();
+            }
+            else {
+                $('.access').hide();
+            }
+        });
+    });
+
+</script>

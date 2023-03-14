@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewData["Title"] = "apidocumentation";
+    Layout = "~/Views/layouts/empty_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>My API Documentation</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>My API Documentation</h1>
+        <p>Welcome to the documentation for My API. This API allows you to do Send lead against  your api Auth Key, Get Data list. It is built using C# and can be accessed via HTTP.</p>
+
+        <h2>Endpoints</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Post</td>
+                    <td>/sendlead</td>
+                    <td>Gets a list of all users</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/getdata/{Auth Token}</td>
+                    <td>Gets the details for a specific user</td>
+                </tr>
+               
+            </tbody>
+        </table>
+
+        <h2>Authentication</h2>
+        <p>To access the API, you will need to include an API key in the header of each request. You can obtain an API key by signing up for an account on our website.</p>
+        <h2>Example of C# to send Lead</h2>
+
+        <pre>
+    {
+      var client = new HttpClient();
+
+            var data = new { user_id=1, group_id=2, source_id="{source_id}", first_name = "{ABC}",last_name="{last_name}", email = "{Email}", list = "mysecondlist", phone = "1111", city="{City}", dob = "03-01-2023", age = "79", zip ="{Zip}", state="{State}", url="{https//}", optin_date= "{optin_date}", timezone_dst_flag= "timezone_dst_flag", exception= "exception", status="Verified", added_source= "{added_source}", lu_carrier_code= "{lu_carrier_code}", lu_international_format= "lu_international_format", lu_local_format= "lu_local_format", lu_carrier_name= "lu_carrier_name", lu_carrier_error_code= "lu_carrier_error_code",created_at= "{created_at}", updated_at= "{updated_at}", auth_key = "yBvVKnOvXJdkSjPAM69lFm6LJnl0oJGHY3g", };
+
+
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("https://emaildeployment.net/api/customer/sendlead", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Lead Send SuccessFully 
+            }
+            else
+            {
+                // There was an error
+            }
+    }
+    </pre>
+
+        <h2>Example of C# to Get Data against Auth Key</h2>
+
+        <pre>
+   
+
+            // Replace YOUR_API_URL with the actual URL of your API
+            string apiUrl = "https://emaildeployment.net/api/customer/getdata";
+
+            // Add the ID of the record you want to retrieve to the API URL
+            string url = apiUrl + "/" + "6oFeVwmmcIqilrPF80RvNN2TYA8IJram8aK";
+
+            // Create a new HTTP request
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            // Set the method to GET (default is GET)
+            request.Method = "GET";
+
+            // Send the request and retrieve the response
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            // Get the stream associated with the response
+            Stream receiveStream = response.GetResponseStream();
+
+            // Read the stream into a string
+            string responseString = new StreamReader(receiveStream).ReadToEnd();
+
+            // Close the stream
+            receiveStream.Close();
+
+            // Close the response
+            response.Close();
+
+            // Deserialize the response string into a JSON object
+            if (responseString != null)
+            { 
+                dynamic json = JsonConvert.DeserializeObject(responseString);
+        }
+        else{
+                //Error
+            }
+          
+    </pre>
+
+        <h2>Errors</h2>
+        <p>If an error occurs, the API will return a JSON object with the following format:</p>
+        <pre>
+    {
+      "error": "Error message"
+    }
+    </pre>
+        <p>Possible error messages are:</p>
+        <ul>
+            <li>Invalid API key: The API key provided is not valid</li>
+            <li>Invalid request: The request is invalid</li>
+            <li>Server error: An error occurred on the server</li>
+        </ul>
+    </div>
+</body>
+</html>
+
